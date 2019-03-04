@@ -1,0 +1,8 @@
+./feature_picking_interface_vti/build
+./fuzzy_rule_based_sampling_histogram_based_vti/build
+./fuzzy_rule_based_sampling_turbine/build
+./fuzzy_rule_based_sampling_turbine_histogram_based/build
+./feature_picking_interface_vti/*.user
+./fuzzy_rule_based_sampling_histogram_based_vti/*.user
+./fuzzy_rule_based_sampling_turbine/*.user
+./fuzzy_rule_based_sampling_turbine_histogram_based/*.user

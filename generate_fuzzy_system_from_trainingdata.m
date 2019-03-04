@@ -1,0 +1,47 @@
+% Xin = csvread('/home/soumya/Test_DataSet/multivar_sampling_test_data/Turbine_training_data/sample_set_in.txt');
+% Xout = csvread('/home/soumya/Test_DataSet/multivar_sampling_test_data/Turbine_training_data/sample_set_out.txt');
+
+% Xin = csvread('/home/soumya/Test_DataSet/multivar_sampling_test_data/Isabel_training_data/sample_set_in.txt');
+% Xout = csvread('/home/soumya/Test_DataSet/multivar_sampling_test_data/Isabel_training_data/sample_set_out.txt');
+
+Xin = csvread('/home/soumya/Test_DataSet/multivar_sampling_test_data/Mfix_training_data/sample_set_in.txt');
+Xout = csvread('/home/soumya/Test_DataSet/multivar_sampling_test_data/Mfix_training_data/sample_set_out.txt');
+
+opt = NaN(4,1);
+opt(4) = 0;
+cluster_num = 6; % User given parameter decides no of rules
+
+%% Train the FIS with training data
+fismat = genfis3_new(Xin,Xout,'sugeno',cluster_num,opt);
+
+
+%% Plot the membership functions
+[x,mf] = plotmf(fismat,'input',1);
+subplot(3,1,1), plot(x,mf);
+xlabel('Membership Functions for UVelocity');
+
+[x,mf] = plotmf(fismat,'input',2);
+subplot(3,1,2),plot(x,mf); 
+xlabel('Membership Functions for Entropy');
+
+[x,mf] = plotmf(fismat,'input',3);
+subplot(3,1,3), plot(x,mf);
+xlabel('Membership Functions for Temperature');
+
+% [x,mf] = plotmf(fismat,'input',4);
+% subplot(4,1,4), plot(x,mf);
+% xlabel('Membership Functions for Centroid');
+
+% %% Evaluate new input data with the trained system
+% xx = [0.326475,0.609921,0.538513,0.32315];
+% [output, IRR, ORR, ARR] = evalfis(xx,fismat);
+
+%% Write output data
+inputmfs = getfis(fismat,'inmfparams');
+inputmfs = inputmfs(:,1:2);
+
+outputmfs = getfis(fismat,'outmfparams');
+outputmfs = outputmfs(1,:); % to get one row , since all rows are same.. is it always like this?
+
+dlmwrite('/home/soumya/Dropbox/Codes/fuzzy_rule_based_multivar_sampling/membership_functions/mfix/inputmfs.txt',inputmfs);
+dlmwrite('/home/soumya/Dropbox/Codes/fuzzy_rule_based_multivar_sampling/membership_functions/mfix/outputmfs.txt',outputmfs);
