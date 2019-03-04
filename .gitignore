@@ -1,3 +1,4 @@
+
 ./feature_picking_interface_vti/build
 ./fuzzy_rule_based_sampling_histogram_based_vti/build
 ./fuzzy_rule_based_sampling_turbine/build
@@ -6,3 +7,37 @@
 ./fuzzy_rule_based_sampling_histogram_based_vti/*.user
 ./fuzzy_rule_based_sampling_turbine/*.user
 ./fuzzy_rule_based_sampling_turbine_histogram_based/*.user
+
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+>>>>>>> 0c07acde257fa01e94b5c03277bddd07570d26cf
